@@ -1,7 +1,16 @@
 import axios from 'axios'
 
+const apiUrl = import.meta.env.VITE_API_URL
+if (!apiUrl) {
+  console.error(
+    '[client] VITE_API_URL is not set. ' +
+    'Requests will be sent to the current origin, which is wrong in production. ' +
+    'Set the VITE_API_URL GitHub secret to your Render backend URL.'
+  )
+}
+
 const client = axios.create({
-  baseURL: (import.meta.env.VITE_API_URL || '') + '/api/v1',
+  baseURL: (apiUrl || '') + '/api/v1',
   headers: { 'Content-Type': 'application/json' },
 })
 
