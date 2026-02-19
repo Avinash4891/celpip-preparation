@@ -8,6 +8,8 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 1440
     openai_api_key: str = ""
+    gemini_api_key: str = ""
+    groq_api_key: str = ""
     elevenlabs_api_key: str = ""
     audio_dir: str = "./data/audio"
 
