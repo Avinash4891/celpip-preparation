@@ -23,6 +23,9 @@ node_modules/
 frontend/dist/
 frontend/.vite/
 
+# Backend (separate repo)
+backend/
+
 # Misc
 .DS_Store
 *.log
