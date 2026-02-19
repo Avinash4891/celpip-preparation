@@ -41,7 +41,9 @@ jobs:
         run: npm run build
         env:
           NODE_ENV: production
-          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+          # Fallback to the Render service URL if the secret is not set.
+          # Override by adding VITE_API_URL to repo Settings → Secrets → Actions.
+          VITE_API_URL: ${{ vars.VITE_API_URL || 'https://celpip-preparation-backend.onrender.com' }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
