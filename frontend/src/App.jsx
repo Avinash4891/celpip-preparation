@@ -10,6 +10,10 @@ import ReadingTest from './pages/reading/ReadingTest'
 import WritingTest from './pages/writing/WritingTest'
 import SpeakingTest from './pages/speaking/SpeakingTest'
 import ProgressPage from './pages/progress/ProgressPage'
+import LearningPathDashboard from './pages/learning/LearningPathDashboard'
+import DiagnosticSetup from './pages/learning/DiagnosticSetup'
+import ModuleViewer from './pages/learning/ModuleViewer'
+import LessonPlayer from './pages/learning/LessonPlayer'
 
 // ── Auth context ────────────────────────────────────────────────────────────
 export const AuthContext = createContext(null)
@@ -23,7 +27,7 @@ function AuthProvider({ children }) {
     const token = localStorage.getItem('access_token')
     if (!token) { setLoading(false); return }
     getMe()
-      .then((res) => setUser(res.data.data))
+      .then((res) => setUser(res.data))
       .catch(() => localStorage.removeItem('access_token'))
       .finally(() => setLoading(false))
   }, [])
@@ -68,6 +72,10 @@ export default function App() {
           <Route path="/writing" element={<Protected><WritingTest /></Protected>} />
           <Route path="/speaking" element={<Protected><SpeakingTest /></Protected>} />
           <Route path="/progress" element={<Protected><ProgressPage /></Protected>} />
+          <Route path="/learning" element={<Protected><LearningPathDashboard /></Protected>} />
+          <Route path="/learning/diagnostic" element={<Protected><DiagnosticSetup /></Protected>} />
+          <Route path="/learning/module/:moduleId" element={<Protected><ModuleViewer /></Protected>} />
+          <Route path="/learning/lesson/:lessonId" element={<Protected><LessonPlayer /></Protected>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>

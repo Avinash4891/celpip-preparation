@@ -193,16 +193,31 @@ export default function SpeakingTest() {
         {currentTask && (
           <div className="bg-white rounded-xl border border-gray-200 shadow p-6 mb-6">
             {currentTask.image_url && (
-              <img src={currentTask.image_url} alt="Scene" className="w-full rounded-lg mb-4 object-cover max-h-48" />
+              <img
+                src={currentTask.image_url}
+                alt="Speaking task scene"
+                className="w-full rounded-lg mb-4 border border-gray-200"
+                style={{ maxHeight: '280px', objectFit: 'contain', background: '#f8f8f8' }}
+              />
             )}
             <p className="text-xs text-gray-400 uppercase tracking-wide mb-2 font-semibold">
               Task {taskNum}: {currentTask.title}
             </p>
-            <p className="text-gray-800 text-base leading-relaxed">{currentTask.prompt}</p>
+            <p className="text-gray-800 text-base leading-relaxed whitespace-pre-wrap">{currentTask.prompt}</p>
             <div className="mt-3 flex gap-4 text-xs text-gray-400">
               <span>Prep: {currentTask.prep_time ?? 30}s</span>
               <span>Response: {currentTask.response_time ?? 60}s</span>
             </div>
+            {currentTask.tips && currentTask.tips.length > 0 && (
+              <details className="mt-3">
+                <summary className="text-xs text-primary-600 font-medium cursor-pointer">Show scoring tips</summary>
+                <ul className="mt-2 space-y-1">
+                  {currentTask.tips.map((tip, i) => (
+                    <li key={i} className="text-xs text-gray-600">• {tip}</li>
+                  ))}
+                </ul>
+              </details>
+            )}
           </div>
         )}
 

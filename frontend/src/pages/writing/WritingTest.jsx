@@ -152,6 +152,16 @@ export default function WritingTest() {
               <li>• Task Fulfillment</li>
             </ul>
           </div>
+          {currentPrompt.scoring_tips && currentPrompt.scoring_tips.length > 0 && (
+            <details className="mt-3">
+              <summary className="text-xs text-primary-600 font-medium cursor-pointer">Show writing tips</summary>
+              <ul className="mt-2 space-y-1">
+                {currentPrompt.scoring_tips.map((tip, i) => (
+                  <li key={i} className="text-xs text-gray-600">• {tip}</li>
+                ))}
+              </ul>
+            </details>
+          )}
         </div>
 
         {/* Writing panel */}

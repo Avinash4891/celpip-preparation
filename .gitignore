@@ -1,4 +1,23 @@
-# Python
+# ── Node / Frontend ──────────────────────────────────────────────────────────
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.cache/
+frontend/coverage/
+
+# Playwright test artifacts (keep test scripts, ignore generated output)
+frontend/playwright-tests/node_modules/
+frontend/playwright-tests/screenshots/
+frontend/playwright-tests/test-results/
+
+# ── Environment ───────────────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ── Python (backend leftovers) ────────────────────────────────────────────────
 __pycache__/
 *.pyc
 *.pyo
@@ -10,22 +29,15 @@ build/
 .venv/
 venv/
 
-# Database
+# ── Database ──────────────────────────────────────────────────────────────────
 *.db
 *.sqlite3
 
-# Environment
-.env
-!.env.example
-
-# Node / Frontend
-node_modules/
-frontend/dist/
-frontend/.vite/
-
-# Backend (separate repo)
-backend/
-
-# Misc
+# ── OS / Editor ───────────────────────────────────────────────────────────────
 .DS_Store
+Thumbs.db
 *.log
+.idea/
+.vscode/
+*.swp
+*.swo
